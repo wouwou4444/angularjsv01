@@ -9,12 +9,17 @@
         $scope.item_list = $scope.items;
         $scope.item_list = "Test"
         $scope.textholder = "Bonjour";
+        $scope.emptymessage = "";
 
         $scope.checkLunch = function () {
             if ($scope.items != null ) {
+                var full_list_count = $scope.items.split(",").length;
                 $scope.item_list = $scope.items.split(",").filter(notEmpty);
                 $scope.count = $scope.item_list.length;
-                
+                if ( full_list_count != $scope.count )
+                    $scope.emptymessage = "Empty items removed from list";
+                else
+                    $scope.emptymessage = "";
             }
             $scope.textholder = sayMessage();
             
