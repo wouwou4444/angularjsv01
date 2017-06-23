@@ -39,30 +39,40 @@
         var sayMessage = function () {
             if (  ( $scope.items == null ) )  {
                 $scope.messageStyle = {
-                    "border": "5px solid red",
                     "color": "red"
                 };
+                $scope.textStyle = {
+                    "border": "5px solid red"
+                };
+                
                 return "Please enter data first"
 
             }
             else if ( $scope.count == 0) {
                 $scope.messageStyle = {
-                    "border": "5px solid red",
                     "color": "red"
                 };
+                $scope.textStyle = {
+                    "border": "5px solid red"
+                };
+
                 return "Please enter data first"
             }
             else if ( $scope.count > 0 & $scope.count <= 3 ) {
                 $scope.messageStyle = {
-                    "border": "2px solid green",
                     "color": "green"
                 };             
+                $scope.textStyle = {
+                    "border": "2px solid green"
+                };
                 return "Enjoy!"
             }
             else {
                 $scope.messageStyle = {
-                    "border": "2px solid green",
                     "color": "green"
+                };             
+                $scope.textStyle = {
+                    "border": "2px solid green"
                 };                
                 return "Too much!"
             }
