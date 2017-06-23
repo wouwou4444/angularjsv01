@@ -6,22 +6,26 @@
     
 
     function LunCheckCOntrollerDI ($scope){
-        $scope.item_list = $scope.items;
-        $scope.item_list = "Test"
-        $scope.textholder = "Bonjour";
-        $scope.emptymessage = "";
+
+        $scope.textHolder = null;
+        $scope.emptyMessage = null;
 
         $scope.checkLunch = function () {
             if ($scope.items != null ) {
                 var full_list_count = $scope.items.split(",").length;
-                $scope.item_list = $scope.items.split(",").filter(notEmpty);
-                $scope.count = $scope.item_list.length;
+                $scope.itemList = $scope.items.split(",").filter(notEmpty);
+                $scope.count = $scope.itemList.length;
                 if ( full_list_count != $scope.count )
-                    $scope.emptymessage = "Empty items removed from list";
+                    $scope.emptyMessage = "Empty items removed from list";
                 else
-                    $scope.emptymessage = "";
+                    $scope.emptyMessage = "";
             }
-            $scope.textholder = sayMessage();
+            else {
+                $scope.emptyMessage = "";
+                $scope.itemList = null;
+                $scope.count = null;            
+            }
+            $scope.textHolder = sayMessage();
             
 
         }
@@ -33,17 +37,33 @@
                 return false;
         }
         var sayMessage = function () {
-            if ( ($scope.count == 1 & $scope.item_list[0] == "" ) | ( $scope.items == null ) )  {
+            if (  ( $scope.items == null ) )  {
+                $scope.messageStyle = {
+                    "border": "5px solid red",
+                    "color": "red"
+                };
                 return "Please enter data first"
 
             }
             else if ( $scope.count == 0) {
+                $scope.messageStyle = {
+                    "border": "5px solid red",
+                    "color": "red"
+                };
                 return "Please enter data first"
             }
             else if ( $scope.count > 0 & $scope.count <= 3 ) {
+                $scope.messageStyle = {
+                    "border": "2px solid green",
+                    "color": "green"
+                };             
                 return "Enjoy!"
             }
             else {
+                $scope.messageStyle = {
+                    "border": "2px solid green",
+                    "color": "green"
+                };                
                 return "Too much!"
             }
         }
